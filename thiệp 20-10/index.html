@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thiệp 20-10</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Hiệu ứng hoa rơi background -->
+  <div id="falling-container"></div>
+
+  <!-- Màn hình 1: Nhập Passcode (Pass: 2010) -->
+  <div class="passcode-screen" id="passcode-screen">
+    <div class="passcode-box">
+      <h2 class="passcode-title">Nhập pass nha ✨</h2>
+      <div class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="keypad">
+        <button onclick="pressKey('1')">1</button>
+        <button onclick="pressKey('2')">2</button>
+        <button onclick="pressKey('3')">3</button>
+        <button onclick="pressKey('4')">4</button>
+        <button onclick="pressKey('5')">5</button>
+        <button onclick="pressKey('6')">6</button>
+        <button onclick="pressKey('7')">7</button>
+        <button onclick="pressKey('8')">8</button>
+        <button onclick="pressKey('9')">9</button>
+        <div></div>
+        <button onclick="pressKey('0')">0</button>
+        <button class="btn-clear" onclick="clearKey()">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Màn hình 2: Trình phát nhạc & Lời bài hát -->
+  <div class="player-container hidden" id="player-screen">
+    <div class="player-card">
+      <div class="card-header-glow"></div>
+
+      <!-- Ảnh đại diện bo góc mềm mại -->
+      <div class="avatar-box">
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=500&q=80" alt="Avatar">
+      </div>
+
+      <!-- Phần Lời bài hát chạy chữ -->
+      <div class="lyrics-container">
+        <div class="lyrics-scroll" id="lyrics-scroll">
+          <p class="line" data-time="0">Trời bên ấy tạnh mưa chưa?</p>
+          <p class="line" data-time="5">Vẫn còn đây một chút nắng</p>
+          <p class="line" data-time="10">Gửi đến em để</p>
+          <p class="line" data-time="13">Thay anh ở bên cạnh em</p>
+          <p class="line" data-time="18">Chờ anh chút thôi</p>
+          <p class="line" data-time="22">Khi mùa đông vừa sang</p>
+          <p class="line" data-time="27">Xếp lại hết ngổn ngang</p>
+          <p class="line" data-time="31">Chờ chút thôi, rồi anh sẽ tìm tới</p>
+          <p class="line" data-time="37">Chờ anh chút thôi</p>
+          <p class="line" data-time="41">Đã phiền em phải đợi</p>
+          <p class="line" data-time="46">Có anh ở đây rồi</p>
+          <p class="line" data-time="50">Vẫn gần em thôi</p>
+          <p class="line" data-time="55">Dù xa cách khung trời</p>
+          <p class="line" data-time="60">...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Thanh điều khiển nhạc & Nút mở thư -->
+    <div class="controls-bar">
+      <button class="btn-icon btn-mail" onclick="openPopup()" title="Xem bức thư 💌">
+        <i class="fa-solid fa-envelope-open-text"></i>
+      </button>
+      <button class="btn-icon btn-play" id="play-btn">
+        <i class="fa-solid fa-play" id="play-icon"></i>
+      </button>
+      <div class="mini-progress" id="progress-container">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup bức thư chúc mừng 20/10 -->
+  <div class="overlay hidden" id="overlay">
+    <div class="popup">
+      <div class="popup-badge">🌸 20/10 Special 🌸</div>
+      <h2>Gửi Cậu ❤️</h2>
+      <div class="popup-content">
+        <p>Gửi đến cậu những lời chúc chân thành và ấm áp nhất vào ngày 20/10!</p>
+        <p>Cảm ơn cậu vì đã luôn xuất hiện và trở thành một phần vô cùng tuyệt vời trong cuộc sống của tớ.</p>
+        <p>Mong rằng mỗi ngày trôi qua, cậu đều cảm nhận được sự dịu dàng của thế giới, luôn giữ trên môi nụ cười rạng rỡ.</p>
+        <p>Chúc cậu có một ngày lễ thật nhiều niềm vui và trọn vẹn yêu thương! ✨</p>
+      </div>
+      <button class="btn-close" onclick="closePopup()">Đóng thư lại ❤️</button>
+    </div>
+  </div>
+
+  <audio id="audio" src="nhac.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
